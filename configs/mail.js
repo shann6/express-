@@ -7,7 +7,7 @@ let transport = null
 // 定義所有email的寄送伺服器位置
 transport = {
   host: 'smtp.gmail.com',
-  port: 465,
+  port: 3005,
   secure: true, // use TLS
   //在專案的 .env 檔案中定義關於寄送郵件的 process.env 變數
   auth: {

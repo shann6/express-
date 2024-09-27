@@ -69,6 +69,7 @@ const filenames = await fs.promises.readdir(routePath)
 
 for (const filename of filenames) {
   const item = await import(pathToFileURL(path.join(routePath, filename)))
+  console.log({ filename, item })
   const slug = filename.split('.')[0]
   app.use(`${apiPath}/${slug === 'index' ? '' : slug}`, item.default)
 }
@@ -76,9 +77,10 @@ for (const filename of filenames) {
 
 // 捕抓404錯誤處理
 app.use(function (req, res, next) {
-  next(createError(404))
+  res.send('error---')
+  // next(createError(404))
 })
-
+/*
 // 錯誤處理函式
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
@@ -90,5 +92,5 @@ app.use(function (err, req, res, next) {
   // 更改為錯誤訊息預設為JSON格式
   res.status(500).send({ error: err })
 })
-
+*/
 export default app
